@@ -1,0 +1,27 @@
+{
+  "name": "lab-6-node-contact-server",
+  "version": "1.0.0",
+  "description": "Лабораторна робота №6: Node.js backend для статичного сайту та форми зворотного зв’язку.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "nodemailer",
+    "brevo",
+    "cloudflare-tunnel"
+  ],
+  "author": "Kugir A.V.",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "nodemailer": "^6.9.16"
+  }
+}
