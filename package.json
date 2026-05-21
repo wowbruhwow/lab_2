@@ -17,7 +17,7 @@
   "author": "Kugir A.V.",
   "license": "MIT",
   "engines": {
-    "node": ">=18"
+    "node": ">=18 <22"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
