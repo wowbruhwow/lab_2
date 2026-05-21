@@ -142,7 +142,7 @@ const sendBrevoEmail = async (data) => {
   return responseBody ? JSON.parse(responseBody) : {};
 };
 
-server.post('/api/contact', async (req, res, next) => {
+server.post('/api/contact', async (req, res) => {
   const { data, errors, isValid } = validateContactForm(req.body);
 
   if (!isValid) {
@@ -150,7 +150,7 @@ server.post('/api/contact', async (req, res, next) => {
       message: 'Перевірте правильність заповнення форми.',
       errors,
     });
-    return next();
+    return;
   }
 
   if (!isMailConfigured()) {
@@ -158,7 +158,7 @@ server.post('/api/contact', async (req, res, next) => {
       message:
         'Відправлення пошти не налаштовано. Заповніть BREVO_API_KEY, BREVO_SENDER_EMAIL та MAIL_TO у файлі .env.',
     });
-    return next();
+    return;
   }
 
   try {
@@ -168,14 +168,12 @@ server.post('/api/contact', async (req, res, next) => {
       message: 'Повідомлення успішно надіслано.',
       messageId: result.messageId,
     });
-    return next();
   } catch (error) {
     console.error('Brevo API error:', error);
 
     res.send(500, {
       message: 'Не вдалося надіслати повідомлення. Спробуйте пізніше.',
     });
-    return next();
   }
 });
 
